@@ -23,7 +23,7 @@ class Volumes(db.Model):
             'pageCount': self.pageCount,
             'imageLinks': self.imageLinks
         }
-        return json_volumes\
+        return json_volumes
     
     @staticmethod
     def create_table():

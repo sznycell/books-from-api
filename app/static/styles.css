@@ -1,0 +1,26 @@
+.profile-thumbnail {
+    position: absolute;
+}
+ul.volumes {
+    list-style-type: none;
+    padding: 0px;
+    margin: 16px 0px 0px 0px;
+    border-top: 1px solid #e0e0e0;
+}
+ul.volumes li.volume {
+    padding: 8px;
+    border-bottom: 1px solid #e0e0e0;
+}
+div.volume-thumbnail {
+    position: absolute;
+}
+div.volume-content {
+    margin-left: 160px;
+    min-height: 230px;
+}
+.volume-body {
+    font-size: 110%;
+}
+div.add-form {
+    min-height: 50px;
+}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+
+        {% for message in get_flashed_messages(category_filter=["success"]) %}
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+        {% endfor %}
+<div class="page-header">
+    <h1>Books from Google API</h1>
+    <form method="POST">
+        {{ form.csrf_token }}
+        {{ form.search }}
+        {{ form.select }}
+        {{ form.submit }}
+    </form>
+</div>
+<ul class="volumes">
+    {% for volume in volumes %}
+    <li class="volume">
+        {% set isbn = volume.industryIdentifiers.split(',') %}
+        {% set links = volume.imageLinks.split(',') %}
+        {% set link = links[0].split(' ') %}
+        <div class="volume-thumbnail">
+            <img class="img-rounded profile-thumbnail" src="{{ link[1] }}">
+        </div>
+        <div class="volume-content">
+            <div class="volume-body"><b>Title:</b> {{ volume.title }}</div>
+            <div class="volume-body"><b>Authors:</b> {{ volume.authors }}</div>
+            <div class="volume-body"><b>Publish date:</b> {{ volume.publishedDate }}</div>
+            {% if isbn[0]|length == 13 %}
+                <div class="volume-body"><b>Industry identifiers:</b> ISBN 13: {{ isbn[0] }} ISBN 10: {{ isbn[1] }}</div>
+            {% else %}
+                <div class="volume-body"><b>Industry identifiers:</b> ISBN 13: {{ isbn[1] }} ISBN 10: {{ isbn[0] }}</div>
+            {% endif %}
+            <div class="volume-body"><b>Page Count:</b> {{ volume.pageCount }}</div>
+            <div class="volume-body"><b>Image Links:</b><br>{{ links[0] }}<br>{{ links[1] }}</div>
+            <div class="volume-body"><b>Language:</b> {{ volume.language}}</div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

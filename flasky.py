@@ -24,7 +24,4 @@ def test():
 @app.cli.command()
 def deploy():
     """Run deployment tasks."""
-    # migrate database to latest revision
-    upgrade()
-
     Volumes.create_table()

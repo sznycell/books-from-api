@@ -9,7 +9,7 @@ class Volumes(db.Model):
     title = db.Column(db.String(64))
     authors = db.Column(db.String(64))
     publishedDate = db.Column(db.Date)
-    industryIdentifiers = db.Column(db.Integer, unique=True)
+    industryIdentifiers = db.Column(db.String, unique=True)
     pageCount = db.Column(db.Integer)
     imageLinks = db.Column(db.String)
     language = db.Column(db.String(64))

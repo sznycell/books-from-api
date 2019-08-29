@@ -2,7 +2,6 @@ from flask import jsonify, request, g, url_for, current_app
 from .. import db
 from ..models import Volumes
 from . import api
-from .errors import forbidden
 
 
 @api.route('/volumes/')
